@@ -1,42 +1,81 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleFavorite } from '../../redux/campers/campersSlice';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import icons from '/sprite.svg';
+import css from './CamperCard.module.css';
+// import EquipmentItem from '../EquipmentItem/EquipmentItem';
 
-const CamperCard = ({ id, name, original, price, description }) => {
-  const dispatch = useDispatch();
-  const favorites = useSelector(state => state.campers.favorites);
-
-  const isFavorite = favorites.includes(id);
-
-  const handleFavoriteClick = () => {
-    dispatch(toggleFavorite(id));
-  };
-
+const CamperCard = ({ camperData, handleSetFavorite, favoriteCampers }) => {
+  const {
+    gallery,
+    name,
+    price,
+    id,
+    rating,
+    reviews,
+    location,
+    // description,
+    // transmission,
+    // engine,
+    // AC,
+    // kitchen,
+    // TV,
+    // bathroom,
+  } = camperData;
+  const isFavorite = favoriteCampers.includes(id);
   return (
     <>
-      <ul>
-        <li>
-          src={original} alt={name}        </li>
-        <li>{name}</li>
-        <li>{price.toFixed(2)} </li>
-        <li>{description}</li>
-      </ul>
-     
-      <ButtonsContainer>
-      {/* Кнопка для переходу на сторінку деталей */}
-      <Link to={`/catalog/${id}`} target="_blank">
-          <Button className="details">Show more</Button>
+      <img className={css.img} src={gallery[0].thumb} alt="Truck photo" />
+      <div className={css.main}>
+        <div className={css.title}>
+          <h3 className={css.name}>{name}</h3>
+          <div className={css.favorite}>
+            <h3 className={css.price}>€{price}.00</h3>
+            <button
+              className={css.favoriteBtn}
+              onClick={() => {
+                handleSetFavorite(id);
+              }}
+            >
+              <svg
+                className={isFavorite ? css.isFavorite : ''}
+                width={26}
+                height={24}
+              >
+                <use href={`${icons}#icon-hart`}></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div className={css.ratingLocation}>
+          <div className={css.locationBox}>
+            <svg width={16} height={16} fill="#ffc531">
+              <use href={`${icons}#icon-star`}></use>
+            </svg>
+            <p
+              className={css.rating}
+            >{`${rating}(${reviews.length} reviews) `}</p>
+          </div>
+          <div className={css.groupLocation}>
+            <svg width={16} height={16} fill="#101828">
+              <use href={`${icons}#icon-map`}></use>
+            </svg>
+            <p className={css.rating}>
+              {location.split(',').reverse().join(', ')}
+            </p>
+          </div>
+        </div>
+        {/* <p className={css.description}>{description}</p>
+        <ul className={css.equipment}>
+          <EquipmentItem str={transmission} />
+          <EquipmentItem str={engine} />
+          {AC && <EquipmentItem str={'AC'} />}
+          {kitchen && <EquipmentItem str={'kitchen'} />}
+          {TV && <EquipmentItem str={'TV'} />}
+          {bathroom && <EquipmentItem str={'bathroom'} />}
+        </ul> */}
+        <Link className="button" to={`/catalog/${id}`}>
+          Show more
         </Link>
-      {/* Кнопка для додавання до обраних */}
-      <button
-        className="favorite"
-        type="button"
-        onClick={handleFavoriteClick}
-        // isFavorite={isFavorite}
-      >
-        {isFavorite ? '❤️ Remove' : '⭐ Add to favorites'}
-      </button>
-      </ButtonsContainer>
+      </div>
     </>
   );
 };

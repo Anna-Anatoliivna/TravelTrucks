@@ -1,50 +1,46 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchCampers, fetchCamperById } from '../../api/campersApi';
-
-// Async actions
-export const getCampers = createAsyncThunk('campers/getCampers', fetchCampers);
-export const getCamperDetails = createAsyncThunk(
-  'campers/getCamperDetails',
-  fetchCamperById,
-);
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchCampers } from '../../redux/campers/campersOperation';
 
 const campersSlice = createSlice({
   name: 'campers',
   initialState: {
-    campers: [],
-    selectedCamper: null,
-    filters: {},
-    favorites: [],
-    status: 'idle',
+    campers: {
+      items: [],
+      total: 0,
+    },
+    isLoading: false,
+    favoriteCampers: [],
     error: null,
   },
   reducers: {
-    setFilters(state, action) {
-      state.filters = action.payload;
+    setFavoriteCampers(state, { payload }) {
+      if (state.favoriteCampers.includes(payload)) {
+        state.favoriteCampers = state.favoriteCampers.filter(
+          id => id !== payload,
+        );
+      } else state.favoriteCampers.push(payload);
     },
-    toggleFavorite(state, action) {
-      const camperId = action.payload;
-      if (state.favorites.includes(camperId)) {
-        state.favorites = state.favorites.filter(id => id !== camperId);
-      } else {
-        state.favorites.push(camperId);
-      }
+    setInitialCampers(state) {
+      state.campers.items = [];
     },
   },
   extraReducers: builder => {
     builder
-      .addCase(getCampers.pending, state => {
-        state.status = 'loading';
+      .addCase(fetchCampers.pending, state => {
+        state.isLoading = true;
+        state.error = null;
       })
-      .addCase(getCampers.fulfilled, (state, action) => {
-        state.campers = action.payload;
-        state.status = 'succeeded';
+      .addCase(fetchCampers.fulfilled, (state, { payload }) => {
+        state.campers.items = [...state.campers.items, ...payload.items];
+        state.campers.total = payload.total;
+        state.isLoading = false;
       })
-      .addCase(getCamperDetails.fulfilled, (state, action) => {
-        state.selectedCamper = action.payload;
+      .addCase(fetchCampers.rejected, state => {
+        state.error('No results for this request.');
+        state.isLoading = false;
       });
   },
 });
 
-export const { setFilters, toggleFavorite } = campersSlice.actions;
+export const { setFavoriteCampers, setInitialCampers } = campersSlice.actions;
 export default campersSlice.reducer;

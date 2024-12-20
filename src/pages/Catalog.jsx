@@ -1,26 +1,39 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCampers } from '../redux/campers/campersSlice';
-import CamperCard from '../components/CamperCard/CamperCard';
+import { fetchCampers } from '../redux/campers/campersOperation';
+// import Filters from '../components/Filters/Filters';
+// import { selectCampers } from '../redux/campers/campersSelectors';
+import { selectFilters } from '../redux/filters/selectors';
+import Container from "../components/Container/Container"
+import CampersList from '../components/CampersList/CampersList';
+import { setInitialCampers } from '../redux/campers/campersSlice';
 
 function Catalog() {
   const dispatch = useDispatch();
-  const { campers, status } = useSelector(state => state.campers);
+   const filters = useSelector(selectFilters);
+  //  const campers = useSelector(selectCampers);
+   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    dispatch(getCampers());
-  }, [dispatch]);
+    const params = { ...filters, limit: 4, page: currentPage };
+    dispatch(fetchCampers(params));
+  }, [currentPage, dispatch, filters]);
+
+    useEffect(() => {
+      setCurrentPage(1);
+      dispatch(setInitialCampers());
+    }, [dispatch, filters]);
+
+  const handleLoadMore = () => {
+    const newPage = currentPage + 1;
+    setCurrentPage(newPage);
+  };
 
   return (
-    <div>
-      <h1>Catalog</h1>
-      {status === 'loading' ? <p>Loading...</p> : null}
-      <div>
-        {campers.map(camper => (
-          <CamperCard key={camper.id} camper={camper} />
-        ))}
-      </div>
-    </div>
+    <Container>
+      {/* <Filters /> */}
+      <CampersList handleLoadMore={handleLoadMore} />
+    </Container>
   );
 }
 

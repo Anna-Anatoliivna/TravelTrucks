@@ -1,0 +1,78 @@
+.img {
+  border-radius: 10px;
+  width: 292px;
+  object-fit: cover;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.title {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.name {
+  line-height: 32px;
+  font-size: 24px;
+}
+.price {
+  font-size: 24px;
+  line-height: 32px;
+}
+.favorite {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.ratingLocation {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.ratingBox {
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.rating {
+  line-height: 24px;
+}
+.locationBox {
+  font-weight: 400;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.description {
+  font-weight: 400;
+  line-height: 24px;
+  width: 500px;
+  color: var(--dark-grey);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 24px;
+}
+.equipment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.isFavorite {
+  fill: #e44848;
+}
+.favoriteBtn {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  display: inline-block; 
+  padding: 0; 
+  font-size: inherit; 
+  line-height: inherit; 
+  cursor: pointer;
+}

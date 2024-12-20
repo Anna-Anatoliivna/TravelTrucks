@@ -1,8 +1,10 @@
+import css from './Footer.module.css';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <>
+    <div className={css.footer}>
       <p>&copy; {currentYear} TravelTrucks. All rights reserved.</p>
       <p>
         Developed by{' '}
@@ -14,7 +16,7 @@ const Footer = () => {
           Anna Ivanova
         </a>
       </p>
-    </>
+    </div>
   );
 };
 

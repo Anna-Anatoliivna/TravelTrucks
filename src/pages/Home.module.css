@@ -1,0 +1,25 @@
+.home {
+  background-image: url(../img/hero1x.webp);
+  padding: 260px 0 260px 64px;
+  background-size: cover;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .home {
+    background-image: url(../img/hero@2x.webp);
+  }
+}
+.title {
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 32px;
+  color: #f7f7f7;
+}
+.subtitle {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  color: #f7f7f7;
+  margin-bottom: 40px;
+}

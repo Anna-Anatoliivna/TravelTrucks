@@ -1,4 +1,6 @@
-/* :root {
+@import url(./reset.css);
+
+:root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 500;
@@ -36,4 +38,4 @@ button {
 button:hover {
   background-color: #d84343;
 }
- */
+

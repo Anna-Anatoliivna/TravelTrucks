@@ -5,14 +5,14 @@ const FilterItem = ({ filterValue, type, inputName, defaultValue }) => {
   return (
     <>
       <input
-        className={css.acCheckbox}
+        className={css.box}
         type={type}
         id={filterValue}
         value={filterValue}
         defaultChecked={defaultValue}
         name={inputName}
       ></input>
-      <label className={css.acLabel} htmlFor={filterValue}>
+      <label className={css.label} htmlFor={filterValue}>
         <svg width={32} height={32}>
           <use href={`${icons}#icon-${filterValue}`}></use>
         </svg>

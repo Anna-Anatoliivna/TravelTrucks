@@ -6,17 +6,17 @@ const EquipmentFilter = ({ filtersDefaultValue, type, inputName }) => {
 
   const filterData = [
     { key: 'AC', defaultValue: filtersDefaultValue.AC },
-    { key: 'automatic', defaultValue: filtersDefaultValue.transmission },
-    { key: 'kitchen', defaultValue: filtersDefaultValue.kitchen },
+    { key: 'Automatic', defaultValue: filtersDefaultValue.transmission },
+    { key: 'Kitchen', defaultValue: filtersDefaultValue.kitchen },
     { key: 'TV', defaultValue: filtersDefaultValue.TV },
-    { key: 'bathroom', defaultValue: filtersDefaultValue.bathroom },
+    { key: 'Bathroom', defaultValue: filtersDefaultValue.ph_shower },
   ];
 
   return (
     <div>
       <p className={css.filters}>Filters</p>
-      <h3 className={css.filterName}>Vehicle equipment</h3>
-      <div className={css.groupFilter}>
+      <h3 className={css.title}>Vehicle equipment</h3>
+      <div className={css.boxFilter}>
         {filterData.map(({ key, defaultValue }) => (
           <FilterItem
             key={key}

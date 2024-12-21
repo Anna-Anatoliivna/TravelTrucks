@@ -9,7 +9,9 @@ const campersSlice = createSlice({
       total: 0,
     },
     isLoading: false,
+    loaded: false,
     favoriteCampers: [],
+    choosenCamper: null,
     error: null,
   },
   reducers: {
@@ -22,6 +24,9 @@ const campersSlice = createSlice({
     },
     setInitialCampers(state) {
       state.campers.items = [];
+    },
+    setChoosenCamper(state, { payload }) {
+      state.choosenCamper = payload;
     },
   },
   extraReducers: builder => {
@@ -36,11 +41,12 @@ const campersSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchCampers.rejected, state => {
-        state.error('No results for this request.');
+        state.error = 'No results for this request.';
         state.isLoading = false;
       });
   },
 });
 
-export const { setFavoriteCampers, setInitialCampers } = campersSlice.actions;
+export const { setFavoriteCampers, setInitialCampers, setChoosenCamper } =
+  campersSlice.actions;
 export default campersSlice.reducer;

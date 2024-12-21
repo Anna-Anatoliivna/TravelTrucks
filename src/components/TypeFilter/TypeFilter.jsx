@@ -6,20 +6,20 @@ const TypeFilter = ({ inputName, type, filtersDefaultValue }) => {
 
   const filterData = [
     {
-      key: 'panelTruck',
+      key: 'PanelTruck',
       defaultValue: filtersDefaultValue.panelTruck ?? false,
     },
     {
-      key: 'integrated',
+      key: 'Integrated',
       defaultValue: filtersDefaultValue.integrated ?? false,
     },
-    { key: 'alcove', defaultValue: filtersDefaultValue.alcove ?? false },
+    { key: 'Alcove', defaultValue: filtersDefaultValue.alcove ?? false },
   ];
 
   return (
     <div>
-      <h3 className={css.filterName}>Vehicle type</h3>
-      <div className={css.groupFilter}>
+      <h3 className={css.title}>Vehicle type</h3>
+      <div className={css.boxFilter}>
         {filterData.map(({ key, defaultValue }) => (
           <FilterItem
             key={key}

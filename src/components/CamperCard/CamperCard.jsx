@@ -28,7 +28,7 @@ const CamperCard = ({ camperData, handleSetFavorite, favoriteCampers }) => {
           <div className={css.title}>
             <h3 className={css.name}>{name}</h3>
             <div className={css.favoriteBox}>
-              <h3 className={css.price}>€{price}.00</h3>
+              <h3 className={css.price}>€{price},00</h3>
               <button
                 className={css.favoriteBtn}
                 onClick={() => {

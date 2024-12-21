@@ -26,10 +26,10 @@ const CampersList = ({ handleLoadMore }) => {
   const renderLoadMore = campers.length < total;
   return (
     campers && (
-      <div className={css.groupCamperListAndLoadMore}>
+      <div className={css.camperListBox}>
         <ul className={css.campersList}>
-          {campers.map(camper => (
-            <li key={camper.id} className={css.listItem}>
+          {campers.map((camper, index) => (
+            <li key={`${camper.id}-${index}`} className={css.listItem}>
               <CamperCard
                 camperData={camper}
                 favoriteCampers={favoriteCampers}
@@ -40,7 +40,9 @@ const CampersList = ({ handleLoadMore }) => {
         </ul>
         {loading && <Loader />}
         {renderLoadMore && !loading && (
-          <LoadMoreButton handleLoadMore={handleLoadMore} />
+          <div className={css.loadMoreContainer}>
+            <LoadMoreButton handleLoadMore={handleLoadMore} />
+          </div>
         )}
       </div>
     )

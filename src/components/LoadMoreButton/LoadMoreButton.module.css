@@ -1,3 +1,10 @@
+.container {
+  text-align: center; 
+  height: 100vh;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+}
 .loadMoreBtn {
   padding: 16px 32px;
   font-size: 16px;
@@ -6,7 +13,10 @@
   border: 1px solid #dadde1;
   transform: border 250ms ease-in-out;
   background-color: transparent;
+  color: #101828;
+  margin-bottom: 52px;
 }
 .loadMoreBtn:hover {
   border: 1px solid #e44848;
+  background-color: transparent;
 }

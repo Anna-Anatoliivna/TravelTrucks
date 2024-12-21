@@ -2,18 +2,17 @@
   display: block;
 }
 .listItem {
-  display: flex;
-  gap: 24px;
-  width: 888px;
-  height: 368px;
-  padding: 24px;
-  border-radius: 20px;
-  border: 1px solid var(--light-grey);
   margin-bottom: 32px;
 }
-.groupCamperListAndLoadMore {
+.CamperListBox {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
+}
+.loadMoreContainer {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  margin-top: 20px; 
 }

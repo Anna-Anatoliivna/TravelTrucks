@@ -1,12 +1,24 @@
+.cardBox {
+  display: flex;
+  border: 1px solid #dadde1;
+  border-radius: 20px;
+  padding: 24px;
+  width: 888px;
+  height: 368px;
+  background-color: #fff;
+  gap: 24px;
+}
 .img {
   border-radius: 10px;
   width: 292px;
+  height: 320px;
   object-fit: cover;
 }
 .main {
   display: flex;
   flex-direction: column;
   width: 100%;
+  color: #101828;
 }
 .title {
   display: flex;
@@ -21,7 +33,7 @@
   font-size: 24px;
   line-height: 32px;
 }
-.favorite {
+.favoriteBox {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -47,6 +59,11 @@
   gap: 4px;
   align-items: center;
 }
+.ratingIcon {
+  fill: #ffc531;
+  width: 16px;
+  height: 16px;
+}
 .description {
   font-weight: 400;
   line-height: 24px;
@@ -70,9 +87,21 @@
   outline: none;
   border: none;
   background-color: transparent;
-  display: inline-block; 
-  padding: 0; 
-  font-size: inherit; 
-  line-height: inherit; 
+  display: inline-block;
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
   cursor: pointer;
+}
+
+.favoriteBtn:hower {
+  background-color: transparent;
+}
+
+.showBtn {
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 166px;
+  height: 56px;
+  background-color: #e44848;
 }

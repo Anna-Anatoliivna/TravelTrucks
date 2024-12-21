@@ -9,6 +9,7 @@ const Catalog = lazy(() => import('./pages/Catalog.jsx'));
 const CamperDetails = lazy(() => import('./pages/CamperDetails.jsx'));
 
 
+
 function App() {
   return (
     <>

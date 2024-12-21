@@ -2,9 +2,11 @@ import css from './LoadMoreButton.module.css';
 
 const LoadMoreButton = ({ handleLoadMore }) => {
   return (
-    <button onClick={handleLoadMore} className={css.loadMoreBtn}>
-      Load more
-    </button>
+    <div className="container">
+      <button onClick={handleLoadMore} className={css.loadMoreBtn}>
+        Load more
+      </button>
+    </div>
   );
 };
 
